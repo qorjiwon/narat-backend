@@ -58,9 +58,6 @@ class TestPostItem(BaseModel):
 async def read_post(item: TestPostItem):
     return JSONResponse({"success": item.item})
 
-# if __name__ == '__main__':
-#     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+@app.get("/healthz")
+def health_check():
+    return {"status": "ok"}
