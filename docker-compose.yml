@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://khudaml7:dbwls@34.64.217.144:5432/narat
+      - SECRET_KEY=naratmalssamikhuda2025
+      - ALLOWED_ORIGINS=https://khuda-ml.store,https://www.khuda-ml.store
+    volumes:
+      - .:/app
+    restart: always
+    networks:
+      - narat-network
+
+networks:
+  narat-network:
+    driver: bridge
